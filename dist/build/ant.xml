@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="jar" name="Scratch Runner: Core">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <property name="file.jar" value="scratchrunner.core.jar"/>
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/../../.."/>
+
+	<target name="jar">
+        <jar destfile="../install/${file.jar}">
+            <manifest>
+                <attribute name="Bundle-Name" value="Scratch Runner: Core"/>
+                <attribute name="Bundle-Description" value="Core Definitions for the Scratch Runner."/>
+                <attribute name="Bundle-Vendor" value="The Shtick"/>
+                <attribute name="Bundle-Version" value="0.1.0"/>
+                <attribute name="Export-Package" value="com.shtick.utils.scratch.runner.core,com.shtick.utils.scratch.runner.core.elements,com.shtick.utils.scratch.runner.core.elements.control"/>
+            </manifest>
+            <fileset dir="../../bin"/>
+        </jar>
+    </target>
+
+	<target name="jar_and_bundle" depends="jar">
+		<copy file="../install/${file.jar}" todir="${dir.workspace}/Scratch Runner Main/dist/install/plain/bundle"/>
+	</target>
+</project>
