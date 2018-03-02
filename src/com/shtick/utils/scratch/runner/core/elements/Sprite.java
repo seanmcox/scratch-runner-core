@@ -57,15 +57,20 @@ public interface Sprite extends ScriptContext, RenderableChild{
 	public void setCostumeByName(String name);
 
 	/**
-	 * @return the scratchX
+	 * Paints the current rendering of the sprite onto the pen layer.
 	 */
-	public double getScratchX();
+	public void stampSprite();
 
 	/**
 	 * @param scratchX the scratchX to set
 	 * @param scratchY 
 	 */
 	public void gotoXY(double scratchX, double scratchY);
+
+	/**
+	 * @return the scratchX
+	 */
+	public double getScratchX();
 
 	/**
 	 * @param scratchX the scratchX to set

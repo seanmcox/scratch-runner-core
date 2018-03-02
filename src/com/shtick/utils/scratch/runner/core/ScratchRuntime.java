@@ -1,7 +1,6 @@
 package com.shtick.utils.scratch.runner.core;
 
 import java.awt.Component;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -86,12 +85,6 @@ public interface ScratchRuntime {
 	 */
 	public ScriptTupleRunner startScript(ScriptTuple script, boolean isAtomic);
 
-	/**
-	 * 
-	 * @return A Graphics2D object that will let you paint on the background using a coordinate system similar to scratch's, but with the y-axis reversed. (ie. centered on the middle, with x increasing to the right and y increasing to the bottom. The width and the height are the stage width and height.)
-	 */
-	public Graphics2D getPenLayerGraphics();
-	
 	/**
 	 * Clears all marks on the pen layer.
 	 */
