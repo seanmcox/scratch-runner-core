@@ -49,7 +49,7 @@ public interface ScratchRuntime {
 	
 	/**
 	 * 
-	 * @return An array of all Sprites/Lists/StageMonitors.
+	 * @return An array of all Sprites/Lists/StageMonitors in order from back to front.
 	 */
 	public RenderableChild[] getAllRenderableChildren();
 	
