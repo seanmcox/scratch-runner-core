@@ -21,24 +21,6 @@ public interface ScriptTupleRunner {
 	 * @return true if flagStop has been called on the instance, or false otherwise.
 	 */
 	public boolean isStopFlagged();
-
-	/**
-	 * Runs a chain of BlockTuples. Blocks until the script completes.
-	 * 
-	 * @param context The context to be used by the script.
-	 * @param script The list of BlockTuples to run. Can be null.
-	 * @throws InvalidScriptDefinitionException 
-	 */
-	@Deprecated
-	public void runBlockTuples(ScriptContext context, java.util.List<BlockTuple> script) throws InvalidScriptDefinitionException;
-//	
-//	/**
-//	 * 
-//	 * @param context The context in which the logic will be evaluated.
-//	 * @param object One of String, Boolean, Integer, Double, or BlockTuple
-//	 * @return If object is a BlockTuple, then the value determined for the given BlockTuple is returned. Otherwise object is returned unchanged.
-//	 */
-//	public Object getValue(ScriptContext context, Object object);
 	
 	/**
 	 * 
@@ -46,6 +28,12 @@ public interface ScriptTupleRunner {
 	 * @return The Opcode being referred to by blockTuple.
 	 */
 	public Opcode getOpcode(BlockTuple blockTuple);
+	
+	/**
+	 * 
+	 * @return The ScriptContext for the script being run.
+	 */
+	public ScriptContext getContext();
 	
 	/**
 	 * 
