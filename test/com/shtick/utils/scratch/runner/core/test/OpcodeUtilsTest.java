@@ -31,7 +31,7 @@ class OpcodeUtilsTest {
 			}
 			
 			@Override
-			public Object[] getArguments() {
+			public java.util.List<Object> getArguments() {
 				return null;
 			}
 		}));

@@ -11,6 +11,7 @@ import com.shtick.utils.scratch.runner.core.elements.ScriptContext;
  */
 public interface OpcodeAction extends Opcode{
 	/**
+	 * TODO Change the arguments parameter to be read-only.
 	 * 
 	 * @param runtime
 	 * @param scriptRunner 

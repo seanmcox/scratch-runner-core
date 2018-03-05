@@ -17,7 +17,7 @@ public abstract class ControlBlockTuple implements BlockTuple{
 	 */
 	@Override
 	public String getOpcode() {
-		return null;
+		return this.getClass().getName();
 	}
 
 	/* (non-Javadoc)

@@ -3,6 +3,9 @@
  */
 package com.shtick.utils.scratch.runner.core.elements.control;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * The local variables are ephemeral variables.
  * The identifier for the variable only has meaning within the context of the control operation for which it was defined.
@@ -13,6 +16,7 @@ package com.shtick.utils.scratch.runner.core.elements.control;
  *
  */
 public class ChangeLocalVarByBlockTuple extends LocalVarBlockTuple{
+	java.util.List<Object> args;
 	private Number value;
 	
 	/**
@@ -22,13 +26,17 @@ public class ChangeLocalVarByBlockTuple extends LocalVarBlockTuple{
 	public ChangeLocalVarByBlockTuple(Integer id, Number value) {
 		super(id);
 		this.value = value;
+		args = new ArrayList<>(2);
+		args.add(id);
+		args.add(value);
+		args = Collections.unmodifiableList(args);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.shtick.utils.scratch.runner.core.elements.BlockTuple#getArguments()
 	 */
 	@Override
-	public Object[] getArguments() {
-		return new Object[] {getLocalVarIdentifier(),value};
+	public java.util.List<Object> getArguments() {
+		return args;
 	}
 }
