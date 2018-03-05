@@ -16,25 +16,25 @@ public class InvalidScriptDefinitionException extends Exception {
 	}
 
 	/**
-	 * @param arg0
+	 * @param message
 	 */
-	public InvalidScriptDefinitionException(String arg0) {
-		super(arg0);
+	public InvalidScriptDefinitionException(String message) {
+		super(message);
 	}
 
 	/**
-	 * @param arg0
+	 * @param cause
 	 */
-	public InvalidScriptDefinitionException(Throwable arg0) {
-		super(arg0);
+	public InvalidScriptDefinitionException(Throwable cause) {
+		super(cause);
 	}
 
 	/**
-	 * @param arg0
-	 * @param arg1
+	 * @param message
+	 * @param cause
 	 */
-	public InvalidScriptDefinitionException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
+	public InvalidScriptDefinitionException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 	/**
