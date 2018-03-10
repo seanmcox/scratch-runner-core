@@ -19,6 +19,7 @@ public interface Sprite extends ScriptContext, RenderableChild{
 	/**
 	 * @return the objName
 	 */
+	@Override
 	public String getObjName();
 
 	/**
