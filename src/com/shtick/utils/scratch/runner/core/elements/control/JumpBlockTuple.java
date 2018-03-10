@@ -3,15 +3,13 @@
  */
 package com.shtick.utils.scratch.runner.core.elements.control;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 /**
  * @author sean.cox
  *
  */
 public abstract class JumpBlockTuple extends ControlBlockTuple{
-	java.util.List<Object> args;
 	private Integer index;
 	
 	/**
@@ -19,9 +17,6 @@ public abstract class JumpBlockTuple extends ControlBlockTuple{
 	 */
 	public JumpBlockTuple(Integer index) {
 		this.index = index;
-		args = new ArrayList<>(1);
-		args.add(index);
-		args = Collections.unmodifiableList(args);
 	}
 
 	/* (non-Javadoc)
@@ -29,7 +24,7 @@ public abstract class JumpBlockTuple extends ControlBlockTuple{
 	 */
 	@Override
 	public java.util.List<Object> getArguments() {
-		return args;
+		return Arrays.asList(index);
 	}
 
 	/**
