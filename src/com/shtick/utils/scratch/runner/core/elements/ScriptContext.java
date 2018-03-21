@@ -3,6 +3,7 @@
  */
 package com.shtick.utils.scratch.runner.core.elements;
 
+import com.shtick.utils.scratch.runner.core.SoundMonitor;
 import com.shtick.utils.scratch.runner.core.ValueListener;
 
 /**
@@ -90,9 +91,9 @@ public interface ScriptContext {
 	/**
 	 * 
 	 * @param soundName
-	 * @param block If true, then this method should block until the sound is completed or stopped.
+	 * @return A SoundMonitor that can be used to determine if the sound has finished playing.
 	 */
-	public void playSoundByName(String soundName, boolean block);
+	public SoundMonitor playSoundByName(String soundName);
 	
 	/**
 	 * Valid values range from 0 to 100. Values of volume outside this range will be set to the closest of either the maximum or the minimum value.
@@ -120,13 +121,9 @@ public interface ScriptContext {
 	public void removeVolumeListener(ValueListener listener);
 	
 	/**
+	 * <p>Stops all scripts currently running under this ScriptContext, and child contexts.
+	 * (Scripts can still be subsequently executed when triggered.)</p>
 	 * 
 	 */
-	public void stopThreads();
-	
-	/**
-	 * 
-	 * @return The ThreadGroup for this script context.
-	 */
-	ThreadGroup getThreadGroup();
+	public void stopScripts();
 }

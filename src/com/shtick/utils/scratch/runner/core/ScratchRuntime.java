@@ -76,14 +76,13 @@ public interface ScratchRuntime {
 	public boolean isMouseDown();
 	
 	/**
-	 * Starts executing the given ScriptTuple on a new thread.
+	 * Adds the given ScriptTuple to the list of ScriptTuples being executed. If it is already being executed, then it is restarted.
 	 * 
 	 * @param script
-	 * @param isAtomic 
 	 * @return A ScriptTupleRunner for the started ScriptTuple.
 	 * 
 	 */
-	public ScriptTupleRunner startScript(ScriptTuple script, boolean isAtomic);
+	public ScriptTupleRunner startScript(ScriptTuple script);
 
 	/**
 	 * Clears all marks on the pen layer.

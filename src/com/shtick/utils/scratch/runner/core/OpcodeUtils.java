@@ -29,13 +29,9 @@ public class OpcodeUtils {
 				a1 = ""+((Double)obj2).longValue();
 		}
 		if(obj1 instanceof Boolean) {
-			if(obj2 instanceof String)
-				return false;
 			a0 = OpcodeUtils.booleanToNumber((Boolean)obj1)+"";
 		}
 		if(obj2 instanceof Boolean) {
-			if(obj1 instanceof String)
-				return false;
 			a1 = OpcodeUtils.booleanToNumber((Boolean)obj2)+"";
 		}
 		return a0.equals(a1);
