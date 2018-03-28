@@ -1,3 +1,5 @@
 /bin/**
 /testBin/**
 /dist/install
+/bin/
+/testBin/
