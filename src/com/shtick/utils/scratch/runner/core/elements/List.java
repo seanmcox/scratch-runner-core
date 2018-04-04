@@ -3,8 +3,6 @@
  */
 package com.shtick.utils.scratch.runner.core.elements;
 
-import com.shtick.utils.scratch.runner.core.ListListener;
-
 /**
  * @author sean.cox
  *
@@ -91,16 +89,4 @@ public interface List extends RenderableChild, Iterable<Object>{
 	 * @return the height
 	 */
 	public Double getHeight();
-	
-	/**
-	 * 
-	 * @param listener
-	 */
-	public void addListListener(ListListener listener);
-	
-	/**
-	 * 
-	 * @param listener
-	 */
-	public void removeListListener(ListListener listener);
 }
