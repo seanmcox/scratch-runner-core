@@ -78,8 +78,6 @@ public class OpcodeUtils {
 			Number n = (Number)value;
 			if(n instanceof Long)
 				return n.toString();
-			if(n instanceof Integer)
-				return n.toString();
 			String retval = n.toString();
 			if(retval.endsWith(".0"))
 				return ""+n.longValue();
@@ -92,29 +90,29 @@ public class OpcodeUtils {
 	 * 
 	 * @param value The value to resolve to an Numeric type.
 	 * @return The numeric value of value as per Scratch's method of resolving data types to numbers.
-	 *         The returned value will be either an Integer or a Double.
-	 *         If value is a Double or an Integer, then value is returned.
+	 *         The returned value will be either a Long or a Double.
+	 *         If value is a Double or a Long, then value is returned.
 	 */
 	public static Number getNumericValue(Object value) {
 		if(value instanceof Number)
 			return (Number)value;
 		if(value instanceof Boolean)
-			return ((Boolean)value).booleanValue()?1:0;
+			return ((Boolean)value).booleanValue()?1L:0L;
 
 		try {
-			return new Integer(value.toString());
+			return new Long(value.toString());
 		}
 		catch(NumberFormatException t) {}
 		if(!(value instanceof String))
-			return new Integer(0);
+			return new Long(0);
 		if("NaN".equals(value)||"Infinity".equals(value))
-			return new Integer(0);
+			return new Long(0);
 		if(((String)value).startsWith("0x")) // Quick and easy way to exclude hexadecimal floating point values.
-			return new Integer(0);
+			return new Long(0);
 		try {
 			return new Double(value.toString());
 		}
 		catch(NumberFormatException t) {}
-		return new Integer(0);
+		return new Long(0);
 	}
 }

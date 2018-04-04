@@ -17,7 +17,7 @@ public interface OpcodeValue extends Opcode{
 	 * @param runner 
 	 * @param context
 	 * @param arguments 
-	 * @return The value resulting from the execution. Must be one of String, Integer, Double, or Boolean
+	 * @return The value resulting from the execution. Must be one of String, Long, Double, or Boolean
 	 */
 	public Object execute(ScratchRuntime runtime, ScriptTupleRunner runner, ScriptContext context, Object[] arguments);
 }
