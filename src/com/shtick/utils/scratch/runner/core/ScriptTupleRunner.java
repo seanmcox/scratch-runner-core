@@ -49,4 +49,10 @@ public interface ScriptTupleRunner {
 	 *         Can be null at the beginning or end of the thread.
 	 */
 	public Opcode getCurrentOpcode();
+	
+	/**
+	 * 
+	 * @return A string in which each line describes an element of the current scratch call stack.
+	 */
+	public String getStackTrace();
 }
