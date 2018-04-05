@@ -18,7 +18,7 @@ class OpcodeUtilsTest {
 		assertFalse(OpcodeUtils.isEvaluable(new LinkedList<>()));
 		assertTrue(OpcodeUtils.isEvaluable("String"));
 		assertTrue(OpcodeUtils.isEvaluable(new Double(1.0)));
-		assertTrue(OpcodeUtils.isEvaluable(new Integer(2)));
+		assertTrue(OpcodeUtils.isEvaluable(new Long(2)));
 		assertTrue(OpcodeUtils.isEvaluable(new BlockTuple() {
 			@Override
 			public Object[] toArray() {
@@ -51,8 +51,8 @@ class OpcodeUtilsTest {
 		assertTrue(OpcodeUtils.equals("value","value"));
 		assertFalse(OpcodeUtils.equals(new Double(1.23),new Double(4.56)));
 		assertTrue(OpcodeUtils.equals(new Double(1.23),new Double(1.23)));
-		assertFalse(OpcodeUtils.equals(new Integer(1),new Integer(4)));
-		assertTrue(OpcodeUtils.equals(new Integer(1),new Integer(1)));
+		assertFalse(OpcodeUtils.equals(new Long(1),new Long(4)));
+		assertTrue(OpcodeUtils.equals(new Long(1),new Long(1)));
 		assertFalse(OpcodeUtils.equals(new Boolean(true),new Boolean(false)));
 		assertTrue(OpcodeUtils.equals(new Boolean(true),new Boolean(true)));
 
@@ -63,16 +63,16 @@ class OpcodeUtilsTest {
 		assertTrue(OpcodeUtils.equals(new Double(1.23),"1.23"));
 
 		// Test integer/string comparisons.
-		assertFalse(OpcodeUtils.equals("1",new Integer(4)));
-		assertTrue(OpcodeUtils.equals("1",new Integer(1)));
-		assertFalse(OpcodeUtils.equals(new Integer(4),"1"));
-		assertTrue(OpcodeUtils.equals(new Integer(1),"1"));
+		assertFalse(OpcodeUtils.equals("1",new Long(4)));
+		assertTrue(OpcodeUtils.equals("1",new Long(1)));
+		assertFalse(OpcodeUtils.equals(new Long(4),"1"));
+		assertTrue(OpcodeUtils.equals(new Long(1),"1"));
 
 		// Test integer/double comparisons.
-		assertFalse(OpcodeUtils.equals(new Integer(4),new Double(4.56)));
-		assertTrue(OpcodeUtils.equals(new Integer(4),new Double(4)));
-		assertFalse(OpcodeUtils.equals(new Double(4.56),new Integer(4)));
-		assertTrue(OpcodeUtils.equals(new Double(4),new Integer(4)));
+		assertFalse(OpcodeUtils.equals(new Long(4),new Double(4.56)));
+		assertTrue(OpcodeUtils.equals(new Long(4),new Double(4)));
+		assertFalse(OpcodeUtils.equals(new Double(4.56),new Long(4)));
+		assertTrue(OpcodeUtils.equals(new Double(4),new Long(4)));
 
 		// Test boolean/string comparisons.
 		assertFalse(OpcodeUtils.equals("0",new Boolean(true)));
@@ -95,14 +95,14 @@ class OpcodeUtilsTest {
 		assertTrue(OpcodeUtils.equals(new Boolean(false),new Double(0.0)));
 
 		// Test boolean/integer comparisons.
-		assertFalse(OpcodeUtils.equals(new Integer(2),new Boolean(true)));
-		assertFalse(OpcodeUtils.equals(new Integer(2),new Boolean(false)));
-		assertTrue(OpcodeUtils.equals(new Integer(1),new Boolean(true)));
-		assertTrue(OpcodeUtils.equals(new Integer(0),new Boolean(false)));
-		assertFalse(OpcodeUtils.equals(new Boolean(true),new Integer(2)));
-		assertFalse(OpcodeUtils.equals(new Boolean(false),new Integer(2)));
-		assertTrue(OpcodeUtils.equals(new Boolean(true),new Integer(1)));
-		assertTrue(OpcodeUtils.equals(new Boolean(false),new Integer(0)));
+		assertFalse(OpcodeUtils.equals(new Long(2),new Boolean(true)));
+		assertFalse(OpcodeUtils.equals(new Long(2),new Boolean(false)));
+		assertTrue(OpcodeUtils.equals(new Long(1),new Boolean(true)));
+		assertTrue(OpcodeUtils.equals(new Long(0),new Boolean(false)));
+		assertFalse(OpcodeUtils.equals(new Boolean(true),new Long(2)));
+		assertFalse(OpcodeUtils.equals(new Boolean(false),new Long(2)));
+		assertTrue(OpcodeUtils.equals(new Boolean(true),new Long(1)));
+		assertTrue(OpcodeUtils.equals(new Boolean(false),new Long(0)));
 	}
 
 	@Test
@@ -139,27 +139,27 @@ class OpcodeUtilsTest {
 			assertEquals(n,OpcodeUtils.getNumericValue(n));
 		
 		// Boolean
-		assertEquals(1,OpcodeUtils.getNumericValue(new Boolean(true)));
-		assertEquals(0,OpcodeUtils.getNumericValue(new Boolean(false)));
+		assertEquals(1L,OpcodeUtils.getNumericValue(new Boolean(true)));
+		assertEquals(0L,OpcodeUtils.getNumericValue(new Boolean(false)));
 		
 		// String
-		assertEquals(1,OpcodeUtils.getNumericValue("1"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0"));
+		assertEquals(1L,OpcodeUtils.getNumericValue("1"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0"));
 		assertEquals(1.5,OpcodeUtils.getNumericValue("1.5"));
-		assertEquals(0,OpcodeUtils.getNumericValue("Hello world"));
-		assertEquals(0,OpcodeUtils.getNumericValue("NaN"));
-		assertEquals(0,OpcodeUtils.getNumericValue("Infinity"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0AFFp1"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0AFF.p2"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0x0AFF.5Ep3"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0x.5Ep4"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0affp5"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0aff.p6"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0x0aff.5ep7"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0x.5ep8"));
-		assertEquals(0,OpcodeUtils.getNumericValue("0x0aff.5ep2"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("Hello world"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("NaN"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("Infinity"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0AFFp1"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0AFF.p2"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0x0AFF.5Ep3"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0x.5Ep4"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0affp5"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0aff.p6"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0x0aff.5ep7"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0x.5ep8"));
+		assertEquals(0L,OpcodeUtils.getNumericValue("0x0aff.5ep2"));
 		
 		// Other
-		assertEquals(0,OpcodeUtils.getNumericValue(new Object()));
+		assertEquals(0L,OpcodeUtils.getNumericValue(new Object()));
 	}
 }
