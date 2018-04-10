@@ -26,8 +26,12 @@ public class ChangeLocalVarByBlockTuple extends LocalVarBlockTuple{
 	public ChangeLocalVarByBlockTuple(Integer id, Number value) {
 		super(id);
 		this.value = value;
+		argumentsUpdated();
+	}
+	
+	private void argumentsUpdated() {
 		args = new ArrayList<>(2);
-		args.add(id);
+		args.add(getLocalVarIdentifier());
 		args.add(value);
 		args = Collections.unmodifiableList(args);
 	}
@@ -38,5 +42,11 @@ public class ChangeLocalVarByBlockTuple extends LocalVarBlockTuple{
 	@Override
 	public java.util.List<Object> getArguments() {
 		return args;
+	}
+
+	@Override
+	public void setLocalVarIdentifier(Integer id) {
+		super.setLocalVarIdentifier(id);
+		argumentsUpdated();
 	}
 }

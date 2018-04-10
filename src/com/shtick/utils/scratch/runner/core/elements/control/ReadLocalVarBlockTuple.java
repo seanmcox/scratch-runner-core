@@ -22,8 +22,12 @@ public class ReadLocalVarBlockTuple extends LocalVarBlockTuple{
 	 */
 	public ReadLocalVarBlockTuple(Integer id) {
 		super(id);
+		argumentsUpdated();
+	}
+	
+	private void argumentsUpdated() {
 		args = new ArrayList<>(1);
-		args.add(id);
+		args.add(getLocalVarIdentifier());
 		args = Collections.unmodifiableList(args);
 	}
 
@@ -33,5 +37,11 @@ public class ReadLocalVarBlockTuple extends LocalVarBlockTuple{
 	@Override
 	public java.util.List<Object> getArguments() {
 		return args;
+	}
+
+	@Override
+	public void setLocalVarIdentifier(Integer id) {
+		super.setLocalVarIdentifier(id);
+		argumentsUpdated();
 	}
 }
