@@ -42,8 +42,9 @@ public interface Sprite extends ScriptContext, RenderableChild{
 	/**
 	 * 
 	 * @param i The index of the current costume. (base-0)
+	 * @return true if a i>=0 and i is less than the number of costumes. False otherwise.
 	 */
-	public void setCurrentCostumeIndex(int i);
+	public boolean setCurrentCostumeIndex(int i);
 
 	/**
 	 * 
@@ -54,8 +55,9 @@ public interface Sprite extends ScriptContext, RenderableChild{
 	/**
 	 * Sets the costume by its name.
 	 * @param name
+	 * @return true if a costume with the given name existed, and false otherwise
 	 */
-	public void setCostumeByName(String name);
+	public boolean setCostumeByName(String name);
 
 	/**
 	 * Paints the current rendering of the sprite onto the pen layer.
