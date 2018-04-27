@@ -37,10 +37,9 @@ public interface ScriptContext {
 	 * Resolves the name first in the current context and next in the parent context, if any.
 	 * 
 	 * @param name
-	 * @return The value of the given variable.
-	 * @throws IllegalArgumentException if the named variable doesn't exist in either this ScriptContext or any parent ScriptContext.
+	 * @return The value of the given variable, or null if the variable is undefined.
 	 */
-	public Object getContextVariableValueByName(String name) throws IllegalArgumentException;
+	public Object getContextVariableValueByName(String name);
 	/**
 	 * Updates the value of the named variable to the given value.
 	 * Resolves the name first in the current context and next in the parent context, if any.
