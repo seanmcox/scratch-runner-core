@@ -95,6 +95,13 @@ public interface ScriptContext {
 	public SoundMonitor playSoundByName(String soundName);
 	
 	/**
+	 * 
+	 * @param index The index of the sound to play. (base-0)
+	 * @return A SoundMonitor that can be used to determine if the sound has finished playing, or null if index<0 or index >= length of the sound list.
+	 */
+	public SoundMonitor playSoundByIndex(int index);
+	
+	/**
 	 * Valid values range from 0 to 100. Values of volume outside this range will be set to the closest of either the maximum or the minimum value.
 	 * 
 	 * @param volume
