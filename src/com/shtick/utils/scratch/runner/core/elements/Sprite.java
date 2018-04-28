@@ -17,6 +17,19 @@ import com.shtick.utils.scratch.runner.core.SpriteListener;
  */
 public interface Sprite extends ScriptContext, RenderableChild{
 	/**
+	 * The rotation style in which the sprite faces the rotation direction by rotating about its rotation center.
+	 */
+	public static final String ROTATION_STYLE_NORMAL = "normal";
+	/**
+	 * The rotation style in which the sprite faces the rotation direction by flipping to face either left to right.
+	 */
+	public static final String ROTATION_STYLE_LEFT_RIGHT = "leftRight";
+	/**
+	 * The rotation style in which the sprite doesn't rotate at all.
+	 */
+	public static final String ROTATION_STYLE_NONE = "none";
+	
+	/**
 	 * @return the objName
 	 */
 	@Override
