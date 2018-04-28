@@ -54,7 +54,7 @@ public interface Sprite extends ScriptContext, RenderableChild{
 	
 	/**
 	 * 
-	 * @param i The index of the current costume. (base-0)
+	 * @param i The index of the new current costume. (base-0)
 	 * @return true if a i>=0 and i is less than the number of costumes. False otherwise.
 	 */
 	public boolean setCurrentCostumeIndex(int i);
