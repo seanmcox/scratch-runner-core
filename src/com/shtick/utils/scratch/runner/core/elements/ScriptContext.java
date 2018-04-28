@@ -90,7 +90,7 @@ public interface ScriptContext {
 	/**
 	 * 
 	 * @param soundName
-	 * @return A SoundMonitor that can be used to determine if the sound has finished playing.
+	 * @return A SoundMonitor that can be used to determine if the sound has finished playing, or null if the named sound doesn't exist.
 	 */
 	public SoundMonitor playSoundByName(String soundName);
 	
