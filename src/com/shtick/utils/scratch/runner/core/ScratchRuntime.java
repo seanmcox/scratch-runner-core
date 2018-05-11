@@ -115,7 +115,7 @@ public interface ScratchRuntime {
 	 * Used to add a component to the top layer (above all the sprites) of the stage.
 	 * Uses a coordinate system similar to scratch's, but with the y-axis reversed.
 	 * ie. centered on the middle, with x increasing to the right and y increasing to the bottom.
-	 * The width and the height are the stage width and height.
+	 * The width and the height units are stage units.
 	 * 
 	 * @param component
 	 * @param x
