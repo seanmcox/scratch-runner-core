@@ -35,6 +35,11 @@ public interface List extends RenderableChild, Iterable<Object>{
 	public void deleteItem(int index);
 	
 	/**
+	 * Empties the list. 
+	 */
+	public void deleteAll();
+	
+	/**
 	 * Replaces the existing value at index with the specified item.
 	 * 
 	 * @param item 
