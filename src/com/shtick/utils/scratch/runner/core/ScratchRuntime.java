@@ -7,6 +7,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
 
+import javax.swing.JPanel;
+
 import com.shtick.utils.scratch.runner.core.elements.RenderableChild;
 import com.shtick.utils.scratch.runner.core.elements.ScriptContext;
 import com.shtick.utils.scratch.runner.core.elements.ScriptTuple;
@@ -62,6 +64,12 @@ public interface ScratchRuntime {
 	 * @return The Stage height in pixels. Normally this should be 360.
 	 */
 	public int getStageHeight();
+	
+	/**
+	 * 
+	 * @return The JPanel component implemented to represent the Stage for the ScratchRuntime.
+	 */
+	public JPanel getStagePanel();
 	
 	/**
 	 * 
@@ -185,4 +193,26 @@ public interface ScratchRuntime {
 	 * @throws IllegalArgumentException if the keyID is unrecognized.
 	 */
 	public boolean isKeyPressed(String keyID);
+	
+	/**
+	 * Starts the project running from tis current state.
+	 */
+	public void start();
+
+	/**
+	 * 
+	 * @return true if the project is currently running (start has been called, and stop hasn't been called since) and false otherwise.
+	 */
+	public boolean isRunning();
+	
+	/**
+	 * Exits the application.
+	 */
+	public void stop();
+
+	/**
+	 * 
+	 * @return true if stop has been called and false otherwise.
+	 */
+	public boolean isStopped();
 }
