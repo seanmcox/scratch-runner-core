@@ -3,7 +3,6 @@
  */
 package com.shtick.utils.scratch.runner.core;
 
-import com.shtick.utils.scratch.runner.core.elements.BlockTuple;
 import com.shtick.utils.scratch.runner.core.elements.ScriptContext;
 
 /**
@@ -27,13 +26,6 @@ public interface ScriptTupleRunner {
 	 * @return true if the ScriptTupleRunner has completed its run through the script (including if the run is aborted) and false otherwise.
 	 */
 	public boolean isStopped();
-	
-	/**
-	 * 
-	 * @param blockTuple
-	 * @return The Opcode being referred to by blockTuple.
-	 */
-	public Opcode getOpcode(BlockTuple blockTuple);
 	
 	/**
 	 * 
