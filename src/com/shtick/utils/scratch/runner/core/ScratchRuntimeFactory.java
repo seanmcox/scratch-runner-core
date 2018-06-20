@@ -34,11 +34,9 @@ public interface ScratchRuntimeFactory {
 	 * @param projectFile
 	 * @param stageWidth
 	 * @param stageHeight
-	 * @param opcodeRegistry 
-	 * @param graphicEffectRegistry 
-	 * @param stageMonitorCommandRegistry 
+	 * @param featureSet 
 	 * @return A ScratchRuntime instance.
 	 * @throws IOException 
 	 */
-	public ScratchRuntime createScratchRuntime(File projectFile, int stageWidth, int stageHeight, OpcodeRegistry opcodeRegistry, GraphicEffectRegistry graphicEffectRegistry, StageMonitorCommandRegistry stageMonitorCommandRegistry) throws IOException;
+	public ScratchRuntime createScratchRuntime(File projectFile, int stageWidth, int stageHeight, FeatureSet featureSet) throws IOException;
 }

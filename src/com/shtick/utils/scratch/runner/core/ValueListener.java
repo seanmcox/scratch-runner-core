@@ -12,18 +12,6 @@ import com.shtick.utils.scratch.runner.core.elements.ScriptContext;
 public interface ValueListener {
 	/**
 	 * 
-	 * @return The ScratchRuntime
-	 */
-	public ScratchRuntime getRuntime();
-	
-	/**
-	 * 
-	 * @return The ScriptTupleRunner for resolving values.
-	 */
-	public ScriptTupleRunner getScriptRunner();
-	
-	/**
-	 * 
 	 * @return The ScriptContext in which the OpcodeValue will be evaluating.
 	 */
 	public ScriptContext getScriptContext();
