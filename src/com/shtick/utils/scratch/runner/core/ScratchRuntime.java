@@ -125,6 +125,8 @@ public interface ScratchRuntime {
 	 * ie. centered on the middle, with x increasing to the right and y increasing to the bottom.
 	 * The width and the height units are stage units.
 	 * 
+	 * It should not be necessary to call this function in a special thread.
+	 * 
 	 * @param component
 	 * @param x
 	 * @param y
