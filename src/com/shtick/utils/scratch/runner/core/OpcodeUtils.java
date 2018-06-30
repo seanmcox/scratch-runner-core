@@ -12,6 +12,11 @@ import com.shtick.utils.scratch.runner.core.elements.Tuple;
  */
 public class OpcodeUtils {
 	/**
+	 * A string of characters ordered as scratch would order them.
+	 */
+	public static final String ORDERED_CHARS = " !\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+	
+	/**
 	 * 
 	 * @param obj1 Expected types are Number, Boolean, String. Must never be null.
 	 * @param obj2 Expected types are Number, Boolean, String. Must never be null.
@@ -114,5 +119,35 @@ public class OpcodeUtils {
 		}
 		catch(NumberFormatException t) {}
 		return new Long(0);
+	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return Less than zero if a is less than b in Scratch's estimation, greater than zero if a is greater than b in Scratch's estimation, and 0 if they are the same.
+	 */
+	public static int compareChars(char a, char b) {
+		a = Character.toLowerCase(a);
+		b = Character.toLowerCase(b);
+		if(a==b)
+			return 0;
+		return ORDERED_CHARS.indexOf(a)-ORDERED_CHARS.indexOf(b);
+	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return Less than zero if a is less than b in Scratch's estimation, greater than zero if a is greater than b in Scratch's estimation, and 0 if they are the same.
+	 */
+	public static int compareStrings(String a, String b) {
+		int diff;
+		for(int i=0;i<Math.min(a.length(), b.length());i++) {
+			diff = compareChars(a.charAt(i),b.charAt(i));
+			if(diff!=0)
+				return diff;
+		}
+		return a.length()-b.length();
 	}
 }
