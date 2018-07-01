@@ -2,6 +2,8 @@ package com.shtick.utils.scratch.runner.core.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
@@ -145,6 +147,7 @@ class OpcodeUtilsTest {
 		// String
 		assertEquals(1L,OpcodeUtils.getNumericValue("1"));
 		assertEquals(0L,OpcodeUtils.getNumericValue("0"));
+		assertEquals(-1L,OpcodeUtils.getNumericValue("-1"));
 		assertEquals(1.5,OpcodeUtils.getNumericValue("1.5"));
 		assertEquals(0L,OpcodeUtils.getNumericValue("Hello world"));
 		assertEquals(0L,OpcodeUtils.getNumericValue("NaN"));
@@ -161,5 +164,72 @@ class OpcodeUtilsTest {
 		
 		// Other
 		assertEquals(0L,OpcodeUtils.getNumericValue(new Object()));
+	}
+
+	@Test
+	void testCompareChars() {
+		assertTrue(OpcodeUtils.compareChars('A', 'B')<0);
+		assertTrue(OpcodeUtils.compareChars('B', 'A')>0);
+		assertTrue(OpcodeUtils.compareChars('A', 'A')==0);
+		assertTrue(OpcodeUtils.compareChars('a', 'B')<0);
+		assertTrue(OpcodeUtils.compareChars('B', 'a')>0);
+		assertTrue(OpcodeUtils.compareChars('a', 'A')==0);
+		assertTrue(OpcodeUtils.compareChars('A', 'b')<0);
+		assertTrue(OpcodeUtils.compareChars('b', 'A')>0);
+		assertTrue(OpcodeUtils.compareChars('b', 'B')==0);
+		
+		{
+			char[] chars = OpcodeUtils.ORDERED_CHARS.toCharArray();
+			Character[] characters = new Character[chars.length];
+			for(int i=0;i<chars.length;i++)
+				characters[i] = Character.valueOf(chars[i]);
+			Arrays.sort(characters, new Comparator<Character>() {
+				/* (non-Javadoc)
+				 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+				 */
+				@Override
+				public int compare(Character o1, Character o2) {
+					return OpcodeUtils.compareChars(o1.charValue(), o2.charValue());
+				}
+			});
+			for(int i=0;i<chars.length;i++)
+				chars[i] = characters[i].charValue();
+			assertEquals(OpcodeUtils.ORDERED_CHARS,new String(chars));
+		}
+
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.append(OpcodeUtils.ORDERED_CHARS);
+			sb = sb.reverse();
+			
+			char[] chars = sb.toString().toCharArray();
+			Character[] characters = new Character[chars.length];
+			for(int i=0;i<chars.length;i++)
+				characters[i] = Character.valueOf(chars[i]);
+			Arrays.sort(characters, new Comparator<Character>() {
+				/* (non-Javadoc)
+				 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+				 */
+				@Override
+				public int compare(Character o1, Character o2) {
+					return OpcodeUtils.compareChars(o1.charValue(), o2.charValue());
+				}
+			});
+			for(int i=0;i<chars.length;i++)
+				chars[i] = characters[i].charValue();
+			assertEquals(OpcodeUtils.ORDERED_CHARS,new String(chars));
+		}
+	}
+
+	@Test
+	void testCompareStrings() {
+		assertTrue(OpcodeUtils.compareStrings("A", "B")<0);
+		assertTrue(OpcodeUtils.compareStrings("B", "A")>0);
+		assertTrue(OpcodeUtils.compareStrings("A", "A")==0);
+		assertTrue(OpcodeUtils.compareStrings("AA", "AB")<0);
+		assertTrue(OpcodeUtils.compareStrings("AB", "AA")>0);
+		assertTrue(OpcodeUtils.compareStrings("AA", "AA")==0);
+		assertTrue(OpcodeUtils.compareStrings("AAA", "AA")>0);
+		assertTrue(OpcodeUtils.compareStrings("AA", "AAA")<0);
 	}
 }
