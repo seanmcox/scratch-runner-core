@@ -8,6 +8,7 @@
 	</tstamp>
 
 	<property name="file.jar" value="scratchrunner.core.${version}.jar"/>
+	<property name="file.src" value="scratchrunner.core.${version}.src.zip"/>
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="${dir.buildfile}/../../.."/>
 
@@ -31,7 +32,11 @@
 		<mkdir dir="${dir.workspace}/scratch-runner-main/dist/osgi_bundles"/>
 		<delete>
 			<fileset dir="${dir.workspace}/scratch-runner-main/dist/osgi_bundles" includes="scratchrunner.core.*.jar"/>
+			<fileset dir="${dir.workspace}/scratch-runner-main/dist/osgi_bundles" includes="scratchrunner.core.*.zip"/>
 		</delete>
 		<copy file="../install/${file.jar}" todir="${dir.workspace}/scratch-runner-main/dist/osgi_bundles"/>
+        <zip destfile="${dir.workspace}/scratch-runner-main/dist/osgi_bundles/${file.src}">
+            <fileset dir="../../src"/>
+        </zip>
 	</target>
 </project>
